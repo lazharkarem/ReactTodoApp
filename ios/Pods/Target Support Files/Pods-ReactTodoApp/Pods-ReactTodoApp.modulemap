@@ -1,0 +1,6 @@
+module Pods_ReactTodoApp {
+  umbrella header "Pods-ReactTodoApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
