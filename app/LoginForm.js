@@ -16,9 +16,7 @@ constructor(){
     render() {
         return (
             <View style={styles.header}>
-                <Text style={styles.text}> 
-                {/* {this.props.children} */}
-                {/* {this.props.title2} */}
+                <Text style={styles.text}>
                         Login Page
                         </Text>
             </View>

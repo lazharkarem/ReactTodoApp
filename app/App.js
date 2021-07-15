@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import RootNavigator from './RootNavigator';
-
-
-
+import MyStack from './Stack';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default class App extends Component {
     render() {
-        return <RootNavigator />
+        return <MyStack />
     }
 }

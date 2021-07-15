@@ -19,7 +19,8 @@ constructor(){
                 <Text style={styles.text}> 
                 {/* {this.props.children} */}
                 {/* {this.props.title2} */}
-                Header APP
+                {/* {this.state.title} */}
+                Header App
                  </Text>
             </View>
 
