@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import { Text, View ,StyleSheet } from "react-native";
 
 
+import Button from './common/Button';
+
 //create comp
 
-class Header extends Component {
+class Home extends Component {
 constructor(){
     super();
     this.state={
@@ -13,15 +15,25 @@ constructor(){
     };
 }
 
+    _onLoginPressed(){
+        console.log('Button Pressed')
+        this.props.navigation.navigate('Login');
+    }
     render() {
         return (
-            <View style={styles.header}>
-                <Text style={styles.text}> 
+            <View >
+                {/* <Text style={styles.text}>  */}
                 {/* {this.props.children} */}
                 {/* {this.props.title2} */}
                 {/* {this.state.title} */}
-                Header App
-                 </Text>
+                {/* Home App */}
+                 {/* </Text> */}
+
+                 <Button 
+                 onPress = {this._onLoginPressed.bind(this)}
+                 >
+                 Login
+                 </Button>
             </View>
 
         );
@@ -44,4 +56,4 @@ constructor(){
 
 
     //export the comp to be avaible for other comp in the apps
-    export default Header;
+    export default Home;
