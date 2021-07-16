@@ -13,13 +13,12 @@ const Button = (props)=>{
 
 const styles= StyleSheet.create({
     button: {
-        marginRight: 5,
-        marginLeft: 5,
-        //borderColor: '#007Aff',
-        borderWidth: 1,
         borderRadius:5,
         backgroundColor:'rgb(42,55,68)',
-        alignSelf:'stretch',
+        justifyContent:'center',
+        marginVertical:10,
+        marginHorizontal:25,
+        height:45
     },
     textStyle:{
         //alignSelf:'center',
