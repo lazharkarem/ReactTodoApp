@@ -18,7 +18,8 @@ const styles= StyleSheet.create({
         justifyContent:'center',
         marginVertical:10,
         marginHorizontal:25,
-        height:45
+        height:45,
+        flex:1
     },
     textStyle:{
         //alignSelf:'center',
@@ -30,5 +31,4 @@ const styles= StyleSheet.create({
         paddingBottom:10
     }
 });
-
-export default Button;
+export {Button} ;
