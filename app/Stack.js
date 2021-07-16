@@ -8,21 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 
-const HomeScreen=  ()=> {
-  return (
-    <View style={{ flex:1, alignItems:'center',justifyContent:'center'}}> 
-    <Text>Home Screen</Text>
-    </View>
-    );
-};
-const HeaderScreen=  ()=> {
-  return (
-    <View style={{ flex:1, alignItems:'center',justifyContent:'center'}}> 
-    {/* <Text>Home Screen</Text> */}
-      <Header></Header>    
-    </View>
-    );
-};
+
+
+
 
 const Stack = createStackNavigator();
 
@@ -30,7 +18,8 @@ function MyStack() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="Header" component={HeaderScreen} />
+      <Stack.Screen name="Header" component={Header}/>
+      <Stack.Screen name="LoginForm" component={LoginForm}/>
     </Stack.Navigator>
     </NavigationContainer>
     
