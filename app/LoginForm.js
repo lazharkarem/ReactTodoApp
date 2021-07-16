@@ -1,6 +1,8 @@
 //import lib
 import React, { Component } from 'react';
-import { Text, View ,StyleSheet } from "react-native";
+import { Text, View  } from "react-native";
+import {Button, Card, CardItem,Input }from './common';
+
 
 
 //create comp
@@ -9,34 +11,43 @@ class LoginForm extends Component {
 constructor(){
     super();
     this.state={
-        title:'Title from state'
+        username: '',
+        password: ''
     };
+}
+_onLoginPressed(){
+    console.log(`User Name is : ${this.state.username} and Password is ${this.state.password}`)
 }
 
     render() {
         return (
-            <View style={styles.header}>
-                <Text style={styles.text}>
-                        Login Page
-                        </Text>
-            </View>
+            <Card>
+            <CardItem>
+            <Input
+            label='Email'
+            placeholder='Enter your email'
+            secureTextEntry={false}
+            onChangeText={(username)=>this.setState({username})}
+            />
+            </CardItem>
 
+            <CardItem>
+            <Input
+            label='Password'
+            placeholder='Enter your passowrd'
+            secureTextEntry={true}
+            onChangeText={(password)=>this.setState({password})}
+
+            />
+            </CardItem>
+
+                <CardItem>
+                    <Button onPress={this._onLoginPressed.bind(this)} >Login</Button>
+                </CardItem>
+            </Card>
         );
-
     }
 }
-    const styles = StyleSheet.create({
-        header: {
-            backgroundColor:'#efefef',
-            height:80,
-            alignItems:'center',
-            justifyContent:'center',
-        },
-        text: {
-            fontSize: 15,
-            fontWeight: 'bold'
-        }
-    });
 
 
 

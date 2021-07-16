@@ -18,8 +18,8 @@ function MyStack() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home}/>
       <Stack.Screen name="Login" component={LoginForm}/>
+      <Stack.Screen name="Home" component={Home}/>
     </Stack.Navigator>
     </NavigationContainer>
     
