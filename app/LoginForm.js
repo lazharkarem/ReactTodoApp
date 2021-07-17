@@ -1,7 +1,11 @@
 //import lib
 import React, { Component } from 'react';
 import { Text, View  } from "react-native";
-import {Button, Card, CardItem,Input }from './common';
+import {Button, Card, CardItem,Input,Spinner }from './common';
+
+import {connect} from 'react-redux';
+import {loginUser} from './actions';
+
 
 
 
@@ -16,9 +20,18 @@ constructor(){
     };
 }
 _onLoginPressed(){
-    console.log(`User Name is : ${this.state.username} and Password is ${this.state.password}`)
+    // console.log(`User Name is : ${this.state.username} and Password is ${this.state.password}`)
+    const {username,password} = this.state;
+    this.props.loginUser({username,password});
 }
-
+    _renderButton(){
+        if(this.props.loading){
+            return <Spinner />;
+        }
+        return (
+            <Button onPress={this._onLoginPressed.bind(this)} >Login</Button>
+        );
+    }
     render() {
         return (
             <Card>
@@ -42,7 +55,7 @@ _onLoginPressed(){
             </CardItem>
 
                 <CardItem>
-                    <Button onPress={this._onLoginPressed.bind(this)} >Login</Button>
+                { this._renderButton()}
                 </CardItem>
             </Card>
         );
@@ -50,6 +63,13 @@ _onLoginPressed(){
 }
 
 
+const mapStateToProps = state => {
+    return {
+        error:state.auth.error,
+        loading:state.auth.loading,
+        user:state.auth.user
 
+    }
+}
     //export the comp to be avaible for other comp in the apps
-    export default LoginForm;
+    export default connect(mapStateToProps,{loginUser})(LoginForm);
