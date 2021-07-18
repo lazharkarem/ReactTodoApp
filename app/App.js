@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 
 import MyStack from './Stack';
-import { NavigationContainer } from '@react-navigation/native';
 import reducers from './reducers';
 export default class App extends Component {
     // render() {
@@ -13,7 +13,7 @@ export default class App extends Component {
 
     render() {
         return(
-            <Provider store={createStore(reducers)}>
+            <Provider store={createStore(reducers, {},applyMiddleware(ReduxThunk))}>
                  <MyStack />
             </Provider>
         )
