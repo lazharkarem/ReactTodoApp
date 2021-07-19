@@ -19,19 +19,27 @@ constructor(){
         password: ''
     };
 }
+
+UNSAFE_componentWillReceiveProps(nextProps) {
+    if(nextProps.user){
+        this.props.navigation.navigate('home');
+    }
+
+}
+
 _onLoginPressed(){
     // console.log(`User Name is : ${this.state.username} and Password is ${this.state.password}`)
     const {username,password} = this.state;
     this.props.loginUser({username,password});
 }
-    _renderButton(){
-        if(this.props.loading){
-            return <Spinner />;
-        }
-        return (
-            <Button onPress={this._onLoginPressed.bind(this)} >Login</Button>
-        );
+_renderButton(){
+    if(this.props.loading){
+        return <Spinner />;
     }
+    return (
+        <Button onPress={this._onLoginPressed.bind(this)} >Login</Button>
+    );
+}
     render() {
         return (
             <Card>
@@ -50,10 +58,9 @@ _onLoginPressed(){
             placeholder='Enter your passowrd'
             secureTextEntry={true}
             onChangeText={(password)=>this.setState({password})}
-
             />
             </CardItem>
-
+            <Text>{this.props.error}</Text>
                 <CardItem>
                 { this._renderButton()}
                 </CardItem>
