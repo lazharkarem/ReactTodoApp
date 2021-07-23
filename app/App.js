@@ -6,15 +6,12 @@ import ReduxThunk from 'redux-thunk';
 import MyStack from './Stack';
 import reducers from './reducers';
 export default class App extends Component {
-    // render() {
-    //     return <MyStack />
-    // }
 
 
     render() {
         return(
             <Provider store={createStore(reducers, {},applyMiddleware(ReduxThunk))}>
-                 <MyStack />
+                <MyStack />
             </Provider>
         )
     }

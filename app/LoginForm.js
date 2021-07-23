@@ -31,6 +31,7 @@ _onLoginPressed(){
     // console.log(`User Name is : ${this.state.username} and Password is ${this.state.password}`)
     const {username,password} = this.state;
     this.props.loginUser({username,password});
+    
 }
 _renderButton(){
     if(this.props.loading){
