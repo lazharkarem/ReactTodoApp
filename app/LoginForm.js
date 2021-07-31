@@ -1,4 +1,3 @@
-//import lib
 import React, { Component } from 'react';
 import { Text, View  } from "react-native";
 import {Button, Card, CardItem,Input,Spinner }from './common';
@@ -6,10 +5,6 @@ import {Button, Card, CardItem,Input,Spinner }from './common';
 import {connect} from 'react-redux';
 import {loginUser} from './actions';
 
-
-
-
-//create comp
 
 class LoginForm extends Component {
 constructor(){
@@ -27,15 +22,8 @@ UNSAFE_componentWillReceiveProps(nextProps) {
 
 }
 
-// UNSAFE_componentWillReceiveProps(nextProps) {
-//     if(nextProps.user){
-//         this.props.navigation.navigate('home');
-//     }
-
-// }
 
 _onLoginPressed(){
-    // console.log(`User Name is : ${this.state.username} and Password is ${this.state.password}`)
     const {username,password} = this.state;
     this.props.loginUser({username,password});
     
@@ -86,5 +74,4 @@ const mapStateToProps = state => {
 
     }
 }
-    //export the comp to be avaible for other comp in the apps
     export default connect(mapStateToProps,{loginUser})(LoginForm);

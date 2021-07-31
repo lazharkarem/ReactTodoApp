@@ -5,21 +5,14 @@ import {
 } from './types'
 import axios from 'axios';
 export const loginUser = ({username,password})=>{
-    //console.log(`${username} and ${password}`);
-    // return {
-    //     type: LOGIN_ATTEMPT
-    // }
-
     return (dispatch)=>{
         dispatch({type:LOGIN_ATTEMPT});
-        
-        //call the API
+
         axios.post('http://localhost:3000/users/auth',
         {email: username, password})
             .then(resp => handleResponse(dispatch,resp.data))
             .catch(error => console.log(error));
     }
-    
 }
 
 const handleResponse = (dispatch, data) => {
