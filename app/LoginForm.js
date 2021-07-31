@@ -22,10 +22,17 @@ constructor(){
 
 UNSAFE_componentWillReceiveProps(nextProps) {
     if(nextProps.user){
-        this.props.navigation.navigate('home');
+        this.props.navigation.navigate('Home');
     }
 
 }
+
+// UNSAFE_componentWillReceiveProps(nextProps) {
+//     if(nextProps.user){
+//         this.props.navigation.navigate('home');
+//     }
+
+// }
 
 _onLoginPressed(){
     // console.log(`User Name is : ${this.state.username} and Password is ${this.state.password}`)
@@ -73,9 +80,9 @@ _renderButton(){
 
 const mapStateToProps = state => {
     return {
-        error:state.auth.error,
-        loading:state.auth.loading,
-        user:state.auth.user
+        error: state.auth.error,
+        loading: state.auth.loading,
+        user: state.auth.user
 
     }
 }
