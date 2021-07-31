@@ -3,7 +3,26 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILED
 } from './types'
+import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
+
+
+const onLoginSuccess = (dispatch,user,token)=>{
+    AsyncStorage.setItem('app_token',token)
+    .then(()=>{
+        dispatch({type: LOGIN_SUCCESS, user})
+    });
+
+
+};
+
+const onLoginFailed = (dispatch,errorMessage)=>{
+
+    dispatch({type: LOGIN_FAILED, error: errorMessage})
+
+};
+
+
 export const loginUser = ({username,password})=>{
     return (dispatch)=>{
         dispatch({type:LOGIN_ATTEMPT});
@@ -25,15 +44,5 @@ const handleResponse = (dispatch, data) => {
 }
 
 
-const onLoginSuccess = (dispatch,user,token)=>{
 
-    dispatch({type: LOGIN_SUCCESS, user})
-
-};
-
-const onLoginFailed = (dispatch,errorMessage)=>{
-
-    dispatch({type: LOGIN_FAILED, error: errorMessage})
-
-};
 
