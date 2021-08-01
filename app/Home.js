@@ -1,34 +1,26 @@
 import React, { Component } from 'react';
-import { Text, View ,StyleSheet, ActivityIndicator, TouchableOpacity } from "react-native";
-import Button from './common/Button';
+import { Text, View, TouchableOpacity } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Home extends Component {
 
-
-    static options = ({ navigation})=> {
-        const { params = {} }= navigation.state;
-        const headerRight = (
-            <TouchableOpacity onPress={params.logout}>
-                <Text>Logout</Text>
-            </TouchableOpacity>
-        );
-
-        return {headerRight};
-    };
-
-
-
-    componentDidMount() {
-        this.props.navigation.setParams({ logout: this._logout});
-    }
     _logout(){
-        console.log('logout');
+
+        AsyncStorage.removeItem('app_token');
+
+        this.props.navigation.navigate('Login');
+
+
     }
 
     render(){
         return (
             <View>
                 <Text>Home Screen</Text>
+
+                <TouchableOpacity onPress={this._logout.bind(this)}>
+                <Text>Logout</Text>
+            </TouchableOpacity>
             </View>
         );
     }

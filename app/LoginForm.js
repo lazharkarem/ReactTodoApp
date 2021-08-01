@@ -17,11 +17,6 @@ constructor(){
     };
 }
 
-// componentDidMount(){
-//     AsyncStorage.getItem('app_token')
-//     .then(token=>{ console.log(token)});
-// }
-
 UNSAFE_componentWillReceiveProps(nextProps) {
     if(nextProps.user){
         this.props.navigation.navigate('Home');
@@ -29,11 +24,9 @@ UNSAFE_componentWillReceiveProps(nextProps) {
 
 }
 
-
 _onLoginPressed(){
     const {username,password} = this.state;
     this.props.loginUser({username,password});
-    
 }
 _renderButton(){
     if(this.props.loading){
@@ -81,4 +74,4 @@ const mapStateToProps = state => {
 
     }
 }
-    export default connect(mapStateToProps,{loginUser})(LoginForm);
+export default connect(mapStateToProps,{loginUser})(LoginForm);
