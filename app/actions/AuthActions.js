@@ -3,23 +3,35 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILED
 } from './types'
+import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
-export const loginUser = ({username,password})=>{
-    //console.log(`${username} and ${password}`);
-    // return {
-    //     type: LOGIN_ATTEMPT
-    // }
 
+
+const onLoginSuccess = (dispatch,user,token)=>{
+    AsyncStorage.setItem('app_token',token)
+    .then(()=>{
+        dispatch({type: LOGIN_SUCCESS, user})
+    });
+
+
+};
+
+const onLoginFailed = (dispatch,errorMessage)=>{
+
+    dispatch({type: LOGIN_FAILED, error: errorMessage})
+
+};
+
+
+export const loginUser = ({username,password})=>{
     return (dispatch)=>{
         dispatch({type:LOGIN_ATTEMPT});
-        
-        //call the API
+
         axios.post('http://localhost:3000/users/auth',
         {email: username, password})
             .then(resp => handleResponse(dispatch,resp.data))
             .catch(error => console.log(error));
     }
-    
 }
 
 const handleResponse = (dispatch, data) => {
@@ -32,15 +44,5 @@ const handleResponse = (dispatch, data) => {
 }
 
 
-const onLoginSuccess = (dispatch,user,token)=>{
 
-    dispatch({type: LOGIN_SUCCESS, user})
-
-};
-
-const onLoginFailed = (dispatch,errorMessage)=>{
-
-    dispatch({type: LOGIN_FAILED, error: errorMessage})
-
-};
 
