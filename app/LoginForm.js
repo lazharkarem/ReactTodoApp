@@ -22,6 +22,7 @@ UNSAFE_componentWillReceiveProps(nextProps) {
     }
 
 }
+
 _onLoginPressed(){
     const {username,password} = this.state;
     this.props.loginUser({username,password});
