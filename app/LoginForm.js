@@ -5,7 +5,6 @@ import {Button, Card, CardItem,Input,Spinner }from './common';
 import {connect} from 'react-redux';
 import {loginUser} from './actions';
 
-// import { AsyncStorage } from 'react-native';
 
 
 class LoginForm extends Component {
